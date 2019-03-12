@@ -4,6 +4,10 @@
   "description": "",
   "main": "App.js",
   "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "format:check": "prettier --list-different \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet --fix",
+    "lint:check": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +21,8 @@
   },
   "homepage": "https://github.com/Marioandres717/react-adopt-me-app#readme",
   "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-config-prettier": "^4.1.0",
     "prettier": "^1.16.4"
   }
 }
