@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { ANIMALS } from 'petfinder-client';
+import useDropdown from './useDropdown';
 
 const SearchParams = () => {
   const [location, setLocation] = useState('Seattle, WA');
-  const [animal, setAnimal] = useState('dog');
   const [breeds, setBreeds] = useState([]);
-  const [breed, setBreed] = useState('havanese');
+  const [animal, AnimalDropdown] = useDropdown('animal', 'dog', ANIMALS);
+  const [breed, BreedDropdown] = useDropdown('Breed', 'Havanese', breeds);
 
   return (
     <div className="search-params">
@@ -20,39 +21,8 @@ const SearchParams = () => {
             onChange={e => setLocation(e.target.value)}
           />
         </label>
-        <label htmlFor="animal">
-          Animal
-          <select
-            value={animal}
-            id="animal"
-            onChange={e => setAnimal(e.target.value)}
-            onBlur={e => setAnimal(e.target.value)}
-          >
-            <option />
-            {ANIMALS.map(animal => (
-              <option key={animal} value={animal}>
-                {animal}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label htmlFor="breed">
-          Breed
-          <select
-            value={breed}
-            id="breed"
-            onChange={e => setBreed(e.target.value)}
-            onBlur={e => setBreed(e.target.value)}
-            disabled={!breeds.length}
-          >
-            <option />
-            {breeds.map(breed => (
-              <option key={breed} value={breed}>
-                {breed}
-              </option>
-            ))}
-          </select>
-        </label>
+        <AnimalDropdown />
+        <BreedDropdown />
         <button>Submit</button>
       </form>
     </div>
