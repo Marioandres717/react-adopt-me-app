@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import pf from 'petfinder-client';
 import Carousel from './Carousel';
+import ErrorBoundary from './ErrorBoundary';
 
 const petfinder = pf({
   key: process.env.API_KEY,
@@ -56,4 +57,10 @@ class Details extends Component {
   }
 }
 
-export default Details;
+export default function DetailsErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      <Details {...props} />
+    </ErrorBoundary>
+  );
+}
