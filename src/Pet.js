@@ -5,7 +5,7 @@ const Pet = ({ name, animal, breed, media, location, id }) => {
   if (media) {
     var hero = media.photos.photo[0].value;
   } else {
-    hero = null;
+    var hero = null;
   }
   return (
     <Link to={`/details/${id}`} className="pet">
