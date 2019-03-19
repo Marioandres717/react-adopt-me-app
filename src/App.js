@@ -10,21 +10,24 @@ const FourOhFour = () => <h1>404 Page Not Found</h1>;
 const App = () => {
   const theme = useState('darkblue');
   return (
-    <React.StrictMode>
-      <ThemeContext.Provider value={theme}>
-        <div>
-          <header>
-            <Link to="/">Adopt Me!</Link>
-          </header>
-          <Router>
-            <SearchParams path="/" />
-            <Details path="/details/:id" />
-            <FourOhFour default />
-          </Router>
-        </div>
-      </ThemeContext.Provider>
-    </React.StrictMode>
+    <ThemeContext.Provider value={theme}>
+      <div>
+        <header>
+          <Link to="/">Adopt Me!</Link>
+        </header>
+        <Router>
+          <SearchParams path="/" />
+          <Details path="/details/:id" />
+          <FourOhFour default />
+        </Router>
+      </div>
+    </ThemeContext.Provider>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
